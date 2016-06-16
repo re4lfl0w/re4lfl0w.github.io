@@ -19,19 +19,19 @@
  </url>
  <url>
   <loc>https://example.com/archive.html</loc>
-  <lastmod>2016-06-16T05:37:00Z</lastmod>
+  <lastmod>2016-06-16T05:57:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/authors/</loc>
-  <lastmod>2016-06-16T05:10:00Z</lastmod>
+  <lastmod>2016-06-16T05:47:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/authors/nikola-tesla/</loc>
-  <lastmod>2016-06-16T05:10:00Z</lastmod>
+  <lastmod>2016-06-16T05:47:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/authors/roberto-alsina/</loc>
-  <lastmod>2016-06-16T05:10:00Z</lastmod>
+  <lastmod>2016-06-16T05:47:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/categories/</loc>
@@ -67,11 +67,11 @@
  </url>
  <url>
   <loc>https://example.com/index-1.html</loc>
-  <lastmod>2016-06-16T05:43:00Z</lastmod>
+  <lastmod>2016-06-16T05:59:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/index-2.html</loc>
-  <lastmod>2016-06-16T05:43:00Z</lastmod>
+  <lastmod>2016-06-16T05:57:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/listings/</loc>
@@ -83,11 +83,7 @@
  </url>
  <url>
   <loc>https://example.com/listings/hello.py.html</loc>
-  <lastmod>2016-06-16T04:32:00Z</lastmod>
- </url>
- <url>
-  <loc>https://example.com/posts/books/ch01/</loc>
-  <lastmod>2016-06-16T05:22:00Z</lastmod>
+  <lastmod>2016-06-16T05:53:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/posts/books/python_cookbook/ch01/</loc>
@@ -174,8 +170,12 @@
   <lastmod>2016-06-16T05:28:00Z</lastmod>
  </url>
  <url>
-  <loc>https://example.com/posts/ch01/</loc>
-  <lastmod>2016-06-16T05:21:00Z</lastmod>
+  <loc>https://example.com/posts/books/python_cookbook/python-cookbook-third-edition/</loc>
+  <lastmod>2016-06-16T05:58:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/readme/</loc>
+  <lastmod>2016-06-16T05:57:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/posts/good-rst/</loc>
