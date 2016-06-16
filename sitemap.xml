@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://example.com/</loc>
-  <lastmod>2016-06-16T04:32:00Z</lastmod>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/2012/</loc>
@@ -19,19 +19,19 @@
  </url>
  <url>
   <loc>https://example.com/archive.html</loc>
-  <lastmod>2016-06-16T04:32:00Z</lastmod>
+  <lastmod>2016-06-16T05:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/authors/</loc>
-  <lastmod>2016-06-16T04:42:00Z</lastmod>
+  <lastmod>2016-06-16T05:10:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/authors/nikola-tesla/</loc>
-  <lastmod>2016-06-16T04:42:00Z</lastmod>
+  <lastmod>2016-06-16T05:10:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/authors/roberto-alsina/</loc>
-  <lastmod>2016-06-16T04:42:00Z</lastmod>
+  <lastmod>2016-06-16T05:10:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/categories/</loc>
@@ -66,6 +66,14 @@
   <lastmod>2016-06-16T04:29:00Z</lastmod>
  </url>
  <url>
+  <loc>https://example.com/index-1.html</loc>
+  <lastmod>2016-06-16T05:43:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/index-2.html</loc>
+  <lastmod>2016-06-16T05:43:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://example.com/listings/</loc>
   <lastmod>2016-06-16T04:29:00Z</lastmod>
  </url>
@@ -76,6 +84,98 @@
  <url>
   <loc>https://example.com/listings/hello.py.html</loc>
   <lastmod>2016-06-16T04:32:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/ch01/</loc>
+  <lastmod>2016-06-16T05:22:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch01/</loc>
+  <lastmod>2016-06-16T05:23:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch02-01/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch02-02/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch03-01/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch03-02/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch04/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch05-01/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch05-02/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch06/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch07/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch08-01/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch08-02/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch09-01/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch09-02/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch10-01/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch10-02/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch11-01/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch12-01/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch13/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch14-01/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/books/python_cookbook/ch14-02/</loc>
+  <lastmod>2016-06-16T05:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/ch01/</loc>
+  <lastmod>2016-06-16T05:21:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/posts/good-rst/</loc>

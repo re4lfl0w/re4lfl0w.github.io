@@ -1,0 +1,2362 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>ch14_02 | My Nikola Site</title>
+<link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+<link rel="canonical" href="https://example.com/posts/books/python_cookbook/ch14-02/">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="Nikola Tesla">
+<meta property="og:site_name" content="My Nikola Site">
+<meta property="og:title" content="ch14_02">
+<meta property="og:url" content="https://example.com/posts/books/python_cookbook/ch14-02/">
+<meta property="og:description" content="14.11 경고 메시지 생성¶문제¶
+프로그램에서 경고 메시지를 표시하고 싶다(더 이상 지원하지 않는 기능이나 사용시 문제점 등)
+
+해결¶
+프로그램에서 경고 메시지를 생성하려면 warning.warn() 함수를 사용함
+
+
+
+
+
+
+
+In [17]:
+
+    
+%cd 14
+
+
+
+
+
+
+
+
+
+
+
+
+/Users/re4lfl0w/Documents/ipython/book">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2016-06-15T19:51:40-09:00">
+</head>
+<body>
+    <section class="social"><ul>
+<li><a href="../../../../index.html" title="Home"><i class="icon-home"></i></a></li>
+            <li><a href="../../../../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
+            <li><a href="../../../../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
+            <li><a href="../../../../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
+            <li><a href="https://getnikola.com" title="About me"><i class="icon-user"></i></a></li>
+            <li><a href="https://twitter.com/getnikola" title="My Twitter"><i class="icon-twitter"></i></a></li>
+            <li><a href="https://github.com/getnikola" title="My Github"><i class="icon-github"></i></a></li>
+
+        </ul></section><section class="page-content"><div class="content" rel="main">
+    <div class="post">
+        <h1 class="p-name entry-title" itemprop="headline name">ch14_02</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2016-06-15T19:51:40-09:00">2016-06-15 19:51</time>
+            
+                      |  
+        <a href="index.ipynb" id="sourcelink">Source</a>
+
+            </div>
+            
+        </div>
+        <div class="body">
+            <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="14.11-경고-메시지-생성">14.11 경고 메시지 생성<a class="anchor-link" href="#14.11-%EA%B2%BD%EA%B3%A0-%EB%A9%94%EC%8B%9C%EC%A7%80-%EC%83%9D%EC%84%B1">¶</a>
+</h3>
+<h4 id="문제">문제<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C">¶</a>
+</h4>
+<ul>
+<li>프로그램에서 경고 메시지를 표시하고 싶다(더 이상 지원하지 않는 기능이나 사용시 문제점 등)</li>
+</ul>
+<h4 id="해결">해결<a class="anchor-link" href="#%ED%95%B4%EA%B2%B0">¶</a>
+</h4>
+<ul>
+<li>프로그램에서 경고 메시지를 생성하려면 warning.warn() 함수를 사용함</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">cd</span> 14
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>/Users/re4lfl0w/Documents/ipython/books/python_cookbook/14
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">writefile</span> warn.py
+import warnings
+
+def func(x, y, logfile=None, debug=False):
+    if logfile is not None:
+        warnings.warn('logfile argument deprecated', DeprecationWarning)
+        
+func(3, 4, '1.txt')
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Writing warn.py
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>warn() 경고 메시지와 경고 클래스를 함께 인자로 전달함</li>
+<li>일반적으로 사용하는 클래스는 UserWarning, DeprecationWarning, SyntaxWarning, RuntimeWarning, ResourceWarning, FutureWarning 등</li>
+<li>경고 처리는 인터프리터를 어떻게 실행했는지와 환경 설정에 따라 달라짐</li>
+<li>예를 들어 파이썬을 실행할 때 -W all 옵션을 사용했다면 다음과 같은 결과가 나옴</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>python3 warn.py
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>python3 -W all warn.py
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>warn.py:5: DeprecationWarning: logfile argument deprecated
+  warnings.warn('logfile argument deprecated', DeprecationWarning)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>python3 -W error warn.py
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Traceback (most recent call last):
+  File "warn.py", line 7, in &lt;module&gt;
+    func(3, 4, '1.txt')
+  File "warn.py", line 5, in func
+    warnings.warn('logfile argument deprecated', DeprecationWarning)
+DeprecationWarning: logfile argument deprecated
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="토론">토론<a class="anchor-link" href="#%ED%86%A0%EB%A1%A0">¶</a>
+</h4>
+<ul>
+<li>경고 메시지 생성하기는 소프트웨어를 유지하고 예외를 발생시키지도 않는, 사소한 문제를 사용자에게 전달할 때 유용한 기술</li>
+<li>예를 들어 라이브러리나 프레임워크의 동작을 변경할 예정이라면, 기존 기능을 제공하는 동안 앞으로 바뀔 내용을 경고 메시지로 표시할 수 있음</li>
+<li>그리고 사용자가 코드를 잘못 사용하고 있는 경우에도 경고할 수 있음</li>
+<li>내장된 라이브러리에서 경고 메시지를 사용하는 예제를 보자</li>
+<li>다음은 파일을 닫지 않고 제거할 때 발생하는 경고 메시지</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">'always'</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'/etc/passwd'</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">f</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>-c:4: ResourceWarning: unclosed file &lt;_io.TextIOWrapper name='/etc/passwd' mode='r' encoding='UTF-8'&gt;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>기본적으로 모든 경고 메시지가 나타나지는 않음</li>
+<li>파이썬에 -W 옵션으로 경고 메시지 출력 제어 가능<ul>
+<li>-W all: 모든 경고 메시지 출력</li>
+<li>-W ignore: 모든 경고 메시지를 무시</li>
+<li>-W error: 모든 경고를 예외로 변경</li>
+</ul>
+</li>
+<li>혹은 warnings.simplefilter() 함수로 결과 출력을 제어 가능<ul>
+<li>always: 모든 경고 메시지가 나타남</li>
+<li>ignore: 모든 경고를 무시</li>
+<li>error: 모든 경고를 예외로 변경</li>
+</ul>
+</li>
+<li>간단한 경우에 앞에 나온 내용만으로 경고 메시지를 다루는 데 부족함이 없음</li>
+<li>warnings 모듈에 경고 메시지를 걸러 내거나 처리하는 고급 기능이 더 많이 있음</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="warnings-참고-사이트">warnings 참고 사이트<a class="anchor-link" href="#warnings-%EC%B0%B8%EA%B3%A0-%EC%82%AC%EC%9D%B4%ED%8A%B8">¶</a>
+</h5>
+<ul>
+<li><a href="http://pymotw.com/2/warnings/">warnings – Non-fatal alerts - Python Module of the Week</a></li>
+<li><a href="https://docs.python.org/2/library/warnings.html">27.6. warnings â Warning control — Python 2.7.8 documentation</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="14.12-프로그램-크래시-디버깅">14.12 프로그램 크래시 디버깅<a class="anchor-link" href="#14.12-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%ED%81%AC%EB%9E%98%EC%8B%9C-%EB%94%94%EB%B2%84%EA%B9%85">¶</a>
+</h3>
+<h4 id="문제">문제<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C">¶</a>
+</h4>
+<ul>
+<li>프로그램에 문제가 생겨서 간단한 방법으로 디버깅하고 싶음</li>
+</ul>
+<h4 id="해결">해결<a class="anchor-link" href="#%ED%95%B4%EA%B2%B0">¶</a>
+</h4>
+<ul>
+<li>예외를 발생시키며 프로그램이 크래시했다면, python3 -i someprogram.py 형식으로 프로그램을 실행해서 좀 더 많은 정보를 얻을 수 있음</li>
+<li>-i 옵션을 붙이면 프로그램이 종료하는 즉시 인터랙티브 쉘 시작</li>
+<li>거기서부터 환경 조사 가능</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">writefile</span> sample.py
+def func(n):
+    return n + 10
+
+func('Hello')
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Writing sample.py
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>python3 -i sample.py
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Traceback (most recent call last):
+  File "sample.py", line 4, in &lt;module&gt;
+    func('Hello')
+  File "sample.py", line 2, in func
+    return n + 10
+TypeError: Can't convert 'int' object to str implicitly
+&gt;&gt;&gt; 
+KeyboardInterrupt
+
+&gt;&gt;&gt; 
+&gt;&gt;&gt; </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>그래도 어디서 잘못된 것인지 확실히 모르겠다면, 크래시 이후 파이썬 debugger를 실행해야 함</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">10</span>
+
+<span class="n">func</span><span class="p">(</span><span class="s1">'Hello'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-18-58e3830df208&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span>     <span class="ansi-green-fg">return</span> n <span class="ansi-blue-fg">+</span> <span class="ansi-cyan-fg">10</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> 
+<span class="ansi-green-fg">----&gt; 4</span><span class="ansi-red-fg"> </span>func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">'Hello'</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-18-58e3830df208&gt;</span> in <span class="ansi-cyan-fg">func</span><span class="ansi-blue-fg">(n)</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">def</span> func<span class="ansi-blue-fg">(</span>n<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">return</span> n <span class="ansi-blue-fg">+</span> <span class="ansi-cyan-fg">10</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> 
+<span class="ansi-green-intense-fg ansi-bold">      4</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">'Hello'</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">TypeError</span>: Can't convert 'int' object to str implicitly</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">pdb</span>
+<span class="n">pdb</span><span class="o">.</span><span class="n">pm</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&gt; &lt;ipython-input-18-58e3830df208&gt;(2)func()
+-&gt; return n + 10
+(Pdb) l
+  1  	def func(n):
+  2  -&gt;	    return n + 10
+  3  	
+  4  	func('Hello')
+[EOF]
+(Pdb) w
+  /Users/re4lfl0w/.virtualenvs/python3/lib/python3.4/site-packages/IPython/core/interactiveshell.py(2883)run_code()
+-&gt; exec(code_obj, self.user_global_ns, self.user_ns)
+  &lt;ipython-input-18-58e3830df208&gt;(4)&lt;module&gt;()
+-&gt; func('Hello')
+&gt; &lt;ipython-input-18-58e3830df208&gt;(2)func()
+-&gt; return n + 10
+(Pdb) print n
+*** SyntaxError: Missing parentheses in call to 'print'
+(Pdb) p n
+'Hello'
+(Pdb) print(n)
+Hello
+(Pdb) p n
+'Hello'
+(Pdb) l
+[EOF]
+(Pdb) q
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [48]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">writefile</span> traceback_test.py
+import traceback
+import sys
+
+def func(n):
+    return n + 10
+
+try:
+    func(arg)
+except:
+    print('**** AN ERROR OCCURRED ****')
+    traceback.print_exc(file=sys.stderr)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Writing traceback_test.py
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [49]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>python3 traceback_test.py
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>**** AN ERROR OCCURRED ****
+Traceback (most recent call last):
+  File "/Users/re4lfl0w/Documents/ipython/books/python_cookbook/14/traceback.py", line 8, in &lt;module&gt;
+    func(arg)
+NameError: name 'arg' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "traceback_test.py", line 1, in &lt;module&gt;
+    import traceback
+  File "/Users/re4lfl0w/Documents/ipython/books/python_cookbook/14/traceback.py", line 11, in &lt;module&gt;
+    traceback.print_exc(file=sys.stderr)
+AttributeError: 'module' object has no attribute 'print_exc'
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>프로그램이 크래시하지는 않지만, 예상한 답이 아닌 이상한 값을 생성한다면 여기 저기 print() 호출을 추가해서 살펴볼 수 있다.</li>
+<li>하지만 이 방식을 사용할 것이라면 관련된 흥미로운 기술이 몇 가지 존재</li>
+<li>첫째로, traceback.print_stack() 함수는 실행한 지점으로부터 프로그램 스택트레이스를 생성함</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [57]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">writefile</span> traceback_print_stack.py
+import traceback
+import sys
+
+def sample(n):
+    if n &gt; 0:
+        sample(n-1)
+    else:
+        traceback.print_stack(file=sys.stderr)
+        
+sample(5)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Overwriting traceback_print_stack.py
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [58]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>python3 traceback_print_stack.py
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  File "traceback_print_stack.py", line 10, in &lt;module&gt;
+    sample(5)
+  File "traceback_print_stack.py", line 6, in sample
+    sample(n-1)
+  File "traceback_print_stack.py", line 6, in sample
+    sample(n-1)
+  File "traceback_print_stack.py", line 6, in sample
+    sample(n-1)
+  File "traceback_print_stack.py", line 6, in sample
+    sample(n-1)
+  File "traceback_print_stack.py", line 6, in sample
+    sample(n-1)
+  File "traceback_print_stack.py", line 8, in sample
+    traceback.print_stack(file=sys.stderr)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>혹은 pdb.set_trace()를 사용하면 프로그램의 어디서나 디버거를 실행할 수 있음</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [62]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">pdb</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+    <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">arg</span> <span class="o">*</span> <span class="mi">3</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">arg</span> <span class="o">+</span> <span class="mi">3</span>    
+    
+<span class="n">func</span><span class="p">(</span><span class="s1">'argument'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&gt; &lt;ipython-input-62-2e9075848a03&gt;(5)func()
+-&gt; a = arg * 3
+(Pdb) n
+&gt; &lt;ipython-input-62-2e9075848a03&gt;(6)func()
+-&gt; s = arg + 3
+(Pdb) l
+  1  	import pdb
+  2  	
+  3  	def func(arg):
+  4  	    pdb.set_trace()
+  5  	    a = arg * 3
+  6  -&gt;	    s = arg + 3
+  7  	
+  8  	func('argument')
+[EOF]
+(Pdb) p a
+'argumentargumentargument'
+(Pdb) n
+TypeError: Can't convert 'int' object to str implicitly
+&gt; &lt;ipython-input-62-2e9075848a03&gt;(6)func()
+-&gt; s = arg + 3
+(Pdb) c
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-62-2e9075848a03&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span>     s <span class="ansi-blue-fg">=</span> arg <span class="ansi-blue-fg">+</span> <span class="ansi-cyan-fg">3</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span> 
+<span class="ansi-green-fg">----&gt; 8</span><span class="ansi-red-fg"> </span>func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">'argument'</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-62-2e9075848a03&gt;</span> in <span class="ansi-cyan-fg">func</span><span class="ansi-blue-fg">(arg)</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>     pdb<span class="ansi-blue-fg">.</span>set_trace<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>     a <span class="ansi-blue-fg">=</span> arg <span class="ansi-blue-fg">*</span> <span class="ansi-cyan-fg">3</span>
+<span class="ansi-green-fg">----&gt; 6</span><span class="ansi-red-fg">     </span>s <span class="ansi-blue-fg">=</span> arg <span class="ansi-blue-fg">+</span> <span class="ansi-cyan-fg">3</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span> 
+<span class="ansi-green-intense-fg ansi-bold">      8</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">'argument'</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">TypeError</span>: Can't convert 'int' object to str implicitly</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>이 기술은 거대한 프로그램의 실행 흐름이나 함수의 인자와 같이 내부를 살펴볼 때 유용</li>
+<li>예를 들어 디버거를 시작하고 나면 print로 변수의 값을 보거나, w와 같은 명령어로 스택 트레이스백을 얻을 수 있음</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="토론">토론<a class="anchor-link" href="#%ED%86%A0%EB%A1%A0">¶</a>
+</h4>
+<ul>
+<li>필요 이상으로 디버깅을 복잡하게 만들 필요 없음</li>
+<li>간단한 에러는 프로그램 트레이스백을 <strong>읽기만 해도</strong> 해결 가능한 경우가 많음(예: 실제 에러는 대게 트레이스백 마지막 줄에 있음)</li>
+<li>개발중에는 코드 중간 중간에 print() 함수를 삽입하는 것만으로도 많은 정보를 얻을 수 있음(단, 개발을 마친 후에 잊지 말고 제거해야 함)</li>
+<li>디버기는 일반적으로 프로그램이 크래시했을 때 함수 내부의 변수 내용을 보는 용도로 사용함</li>
+<li>
+<strong>크래시가 발생한 후</strong>에 <strong>디버거를 시작하는 방법은 유용</strong>한 기술</li>
+<li>pdb.set_trace() 구문을 넣으면 내부의 흐름이 어떻게 돌아가는지 정확하게 알지 못하는 매우 복잡한 프로그램을 디버깅할 때 유용함</li>
+<li>근본적으로, 프로그램은 set_trace() 호출이 나올 때까지 실행되고, 호출하는 순간 즉시 디버거로 돌입함. 거기서부터 디버깅을 시작하면 됨</li>
+<li>파이썬 개발에 IDE를 사용한다면, IDE가 pdb를 사용해서 자체적으로 디버깅 인터페이스를 제공하는 것이 일반적</li>
+<li>자세한 정보는 사용중인 IDE의 메뉴얼 참고</li>
+</ul>
+<h5 id="PyCharm-debugging">PyCharm debugging<a class="anchor-link" href="#PyCharm-debugging">¶</a>
+</h5>
+<ul>
+<li><a href="https://www.jetbrains.com/pycharm/webhelp/running-and-debugging.html">Running and Debugging</a></li>
+<li><a href="https://www.jetbrains.com/pycharm/webhelp/debugging.html">Debugging</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="14.13-프로파일링과-타이밍">14.13 프로파일링과 타이밍<a class="anchor-link" href="#14.13-%ED%94%84%EB%A1%9C%ED%8C%8C%EC%9D%BC%EB%A7%81%EA%B3%BC-%ED%83%80%EC%9D%B4%EB%B0%8D">¶</a>
+</h3>
+<h4 id="문제">문제<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C">¶</a>
+</h4>
+<ul>
+<li>프로그램에서 시간을 많이 소비하는 곳이 어디인지 찾고 그 시간을 측정하고 싶다</li>
+</ul>
+<h4 id="해결">해결<a class="anchor-link" href="#%ED%95%B4%EA%B2%B0">¶</a>
+</h4>
+<ul>
+<li>프로그램의 전체 실행 시간을 측정하고 싶다면 Unix의 time 명령만으로도 충분하다</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [76]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">writefile</span> time_test.py
+def add(a, b):
+    return a + b
+
+def main(MAX):
+    total = 0
+    for i in range(MAX):
+        total += add(i, i)
+        
+main(10000000)
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Overwriting time_test.py
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [77]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span><span class="nb">time</span> python3 time_test.py
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+real	0m2.105s
+user	0m2.093s
+sys	0m0.008s
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>하지만 프로그램이 어떤 일을 하고 있는지 세세한 정보가 필요하다면 cProfile 모듈을 사용해야 함</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [78]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">!</span>python3 -m cProfile time_test.py
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>         10000004 function calls in 3.259 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    3.259    3.259 time_test.py:1(&lt;module&gt;)
+ 10000000    0.982    0.000    0.982    0.000 time_test.py:1(add)
+        1    2.277    2.277    3.259    3.259 time_test.py:4(main)
+        1    0.000    0.000    3.259    3.259 {built-in method exec}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [80]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">timethis</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">'{}.{} : {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">__module__</span><span class="p">,</span> 
+                                  <span class="n">func</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> 
+                                  <span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">r</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [82]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="nd">@timethis</span>
+<span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+        
+<span class="n">countdown</span><span class="p">(</span><span class="mi">10000000</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>__main__.countdown : 0.7492873570008669
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>구문의 블록 시간을 측정하려면 콘택스트 매니저를 정의함</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [83]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+
+<span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">timeblock</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">'{} : {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>다음은 이 콘택스트 매니저가 동작하는 예제</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [84]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">with</span> <span class="n">timeblock</span><span class="p">(</span><span class="s1">'counting'</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">10000000</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>counting : 1.3143891820000135
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>특정 코드 조각의 성능을 측정할 때는 timeit 모듈이 유용</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">timeit</span>
+<span class="n">timeit</span><span class="p">(</span><span class="s1">'math.sqrt(2)'</span><span class="p">,</span> <span class="s1">'import math'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.12336524500278756</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">timeit</span><span class="p">(</span><span class="s1">'sqrt(2)'</span><span class="p">,</span> <span class="s1">'from math import sqrt'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.08896779199858429</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="k">def</span> <span class="nf">sqrt1</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> sqrt1()
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1000000 loops, best of 3: 205 ns per loop
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="k">def</span> <span class="nf">sqrt2</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> sqrt2()
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>10000000 loops, best of 3: 157 ns per loop
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>timeit은 첫 번째 인자로 명시된 코드를 백만 번 실행하고 그 시간을 측정함</li>
+<li>두번째 인자는 테스트를 실행하기 위해 필요한 환경을 설정하는 문자열</li>
+<li>실행하는 횟수를 조절하고 싶으면 다음과 같이 number 인자를 추가함</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">timeit</span><span class="p">(</span><span class="s1">'math.sqrt(2)'</span><span class="p">,</span> <span class="s1">'import math'</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10000000</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[16]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1.1827796819998184</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">timeit</span><span class="p">(</span><span class="s1">'sqrt(2)'</span><span class="p">,</span> <span class="s1">'from math import sqrt'</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10000000</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[18]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.8908851390006021</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>성능을 측정할 때, 결과값은 <strong>항상 근사치</strong>라는 점을 유념</li>
+<li>앞에 나온 에제에서는 time.perf_counter() 함수로 좀 더 정확한 시간을 측정했음</li>
+<li>하지만 이 역시 벽시계 시간(wall-clock time)을 측정하는 것이고, 컴퓨터의 부하와 같이 다른 요소에 영향을 받을 수 있음</li>
+<li>벽시계 시간이 아닌 프로세스 시간에 관심이 있다면 time.process_time()을 사용</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">timethis</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">'{}.{} : {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">__module__</span><span class="p">,</span> 
+                                  <span class="n">func</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> 
+                                  <span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">r</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="nd">@timethis</span>
+<span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+        
+<span class="n">countdown</span><span class="p">(</span><span class="mi">10000000</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>__main__.countdown : 0.7182929999999992
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>마지막으로, 자세한 타이밍 분석을 해야 한다면 time, timeit 등 관련 모듈의 문서를 잘 읽어서 플랫폼의 차이점 등을 잘 이해하도록 함</li>
+<li>스톱워치 타이머 클래스를 만들어 보았던 레시피 13.13도 참고하도록 한다</li>
+</ul>
+<h5 id="timeit">timeit<a class="anchor-link" href="#timeit">¶</a>
+</h5>
+<ul>
+<li><a href="https://docs.python.org/2/library/timeit.html">26.6. timeit â Measure execution time of small code snippets — Python 2.7.8 documentation</a></li>
+<li><a href="http://pymotw.com/2/timeit/">timeit – Time the execution of small bits of Python code. - Python Module of the Week</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="14.14-프로그램-실행-속도-향상">14.14 프로그램 실행 속도 향상<a class="anchor-link" href="#14.14-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EC%8B%A4%ED%96%89-%EC%86%8D%EB%8F%84-%ED%96%A5%EC%83%81">¶</a>
+</h3>
+<h4 id="문제">문제<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C">¶</a>
+</h4>
+<ul>
+<li>프로그램 실행 속도가 너무 느리다.</li>
+<li>이때 C 확장이나 just-in-time(JIT) 컴파일러와 같은 극단적인 해결책의 도움없이 속도를 향상시키고 싶다</li>
+</ul>
+<h4 id="해결">해결<a class="anchor-link" href="#%ED%95%B4%EA%B2%B0">¶</a>
+</h4>
+<ul>
+<li>최적화의 첫 번째 규칙은 <strong>"하지 않는 것"</strong>이고, 두 번째 규칙은 <strong>"중요하지 않은 것을 최적화 하지 마라"</strong>
+</li>
+<li>이 목적을 달성하려면 우선 레시피 14.13에 나왔던 방법으로 코드를 <strong>프로파일링</strong>해야 함</li>
+<li>대개 프로그램의 실행 시간을 대부분 차지하는 곳은 <strong>내부 데이터 처리 루프</strong> 등 <strong>몇 군데</strong>로 압축됨</li>
+<li>이 위치를 알아냈다면, 다음에 나오는 기술을 사용해서 프로그램 실행 속도를 향상시켜 보자</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="함수-사용">함수 사용<a class="anchor-link" href="#%ED%95%A8%EC%88%98-%EC%82%AC%EC%9A%A9">¶</a>
+</h5>
+<ul>
+<li>많은 프로그래머들은 파이썬을 단순한 스크립트 작성에 사용함</li>
+<li>스크립트를 작성할 때는 아주 간단한 구조로 코드를 쓰는 경우가 많음</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># somescript.py</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="c1"># 작업 수행</span>
+        <span class="o">...</span>
+</pre></div>
+<ul>
+<li>이와 같이 전역 영역에 정의된 코드는 함수에 정의한 코드보다 실행 속도가 느리다는 사실을 아는 사람이 많지 않음</li>
+<li>속도 차이는 지역과 전역변수의 구현에서 비롯됨(지역 관련 변수의 실행 속도가 더 빠름)</li>
+<li>따라서 프로그램 실행 속도를 향상시키려면 간단히 스크립트 구문을 함수 안에 넣으면 됨</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># somescript.py</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+            <span class="c1"># 작업 수행</span>
+            <span class="o">...</span>
+<span class="n">main</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+<ul>
+<li>속도 차이는 수행하는 작업에 따라 크게 다르지만, 경험에 따르면 15~30% 정도의 향상이 놀라울 정도는 아니다.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="속성-접근의-선택적-삭제">속성 접근의 선택적 삭제<a class="anchor-link" href="#%EC%86%8D%EC%84%B1-%EC%A0%91%EA%B7%BC%EC%9D%98-%EC%84%A0%ED%83%9D%EC%A0%81-%EC%82%AD%EC%A0%9C">¶</a>
+</h5>
+<ul>
+<li>점(.) 연산자로 속성에 접근하는 작업에는 대가가 따른다.</li>
+<li>코드 내부적으로는 __getattribute__()와 __getattr__() 같은 특별 메소드를 호출하느넫, 결국 딕셔너리 검색으로 이어지는 경우가 많음</li>
+<li>속성 사용은 from module import name 형식의 임포트와 선택적인 바운드 메소드 사용으로 피해갈 수 있음</li>
+<li>이해를 돕기 위해 다음과 같은 코드가 있다고 가정해 보자</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+
+<span class="k">def</span> <span class="nf">compute_roots1</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">def</span> <span class="nf">compute_roots2</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">result_append</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">append</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+        <span class="n">result_append</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">main1</span><span class="p">():</span>
+    <span class="c1"># 테스트</span>
+    <span class="n">nums</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">compute_roots1</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main2</span><span class="p">():</span>
+    <span class="c1"># 테스트</span>
+    <span class="n">nums</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">compute_roots2</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">time</span> main1()
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 20.4 s, sys: 927 ms, total: 21.3 s
+Wall time: 21.3 s
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">time</span> main2()
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 14 s, sys: 942 ms, total: 14.9 s
+Wall time: 14.9 s
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="변수의-지역성-이해">변수의 지역성 이해<a class="anchor-link" href="#%EB%B3%80%EC%88%98%EC%9D%98-%EC%A7%80%EC%97%AD%EC%84%B1-%EC%9D%B4%ED%95%B4">¶</a>
+</h5>
+<ul>
+<li>앞에서 설명한 대로 지역변수는 전역변수보다 실행 속도가 빠름</li>
+<li>빈번하게 접근하는 이름의 경우 최대한 지역에 가깝게 만들어서 속도 향상을 도모할 수 있음</li>
+<li>예를 들어 앞에 나왔던 compute_roots() 함수를 다음처럼 수정해 보자</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">compute_roots3</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+    <span class="n">sqrt</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">result_append</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">append</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+        <span class="n">result_append</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">def</span> <span class="nf">main3</span><span class="p">():</span>
+    <span class="c1"># 테스트</span>
+    <span class="n">nums</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">compute_roots3</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">time</span> main3()
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>CPU times: user 13 s, sys: 898 ms, total: 13.9 s
+Wall time: 13.9 s
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>13.9s: 지역변수에서 불러오기</li>
+<li>14.9s: .연산자 선택적 삭제</li>
+<li>21.3s: 일반적 접근</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>이 버전에서 sqrt를 math 모듈에서 가져와 지역변수에 넣었다. 이 코드를 실행해 보면 이제 25초로 시간이 다시 줄어들었음(29초에서 4초 향상)</li>
+<li>이는 sqrt를 전역 레벨에서 찾지않고 <strong>지역 레벨에서 찾는 것이 더 빠르기</strong> 때문에 일어난 현상</li>
+</ul>
+<ul>
+<li>클래스에서 작업할 때 지역 인자도 적용됨</li>
+<li>일반적으로 self.name과 같이 값을 찾는 것이 지역변수에 접근하는 것보다 느리다.</li>
+<li>순환문 내부에서 자주 접근하는 속성을 지역변수에 넣으면 실행 속도가 빨라짐</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># 느림</span>
+<span class="k">class</span> <span class="nc">SomeClass</span><span class="p">:</span>
+    <span class="o">...</span>
+    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+            <span class="n">op</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="c1"># 빠름</span>
+<span class="k">class</span> <span class="nc">SomeClass</span><span class="p">:</span>
+    <span class="o">...</span>
+    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+            <span class="n">op</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="불필요한-추상화-피하기">불필요한 추상화 피하기<a class="anchor-link" href="#%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EC%B6%94%EC%83%81%ED%99%94-%ED%94%BC%ED%95%98%EA%B8%B0">¶</a>
+</h5>
+<ul>
+<li>데코레이터나 프로퍼티, 디스크립터 등 코드를 추가적인 처리 레이어로 감쌀 때마다 실행 속도가 느려짐</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span>
+    
+    <span class="nd">@y.setter</span>
+    <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="n">value</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[41]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">y</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[42]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [44]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [45]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">y</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[45]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> a.x
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>10000000 loops, best of 3: 56.1 ns per loop
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> a.y
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>10000000 loops, best of 3: 170 ns per loop
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>이제 간단한 시간 측정</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">timeit</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">timeit</span><span class="p">(</span><span class="s1">'a.x'</span><span class="p">,</span> <span class="s1">'from __main__ import a'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[39]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.04903155400097603</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">timeit</span><span class="p">(</span><span class="s1">'a.y'</span><span class="p">,</span> <span class="s1">'from __main__ import a'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[40]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.18678854100289755</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>보는 것처럼 프로퍼티 y 접근은 단순히 x에 접근하는 것보다 4.5배 이상 느리다.</li>
+<li>이런 차이점이 문제가 된다면 y 정의에 사용한 프로퍼티가 정말로 필요한 것인지 진지하게 고민해 보아야 함</li>
+<li>만약 필요 없다고 판단한다면 프로퍼티를 제거하고 단순히 속성을 사용하는 방법을 채택</li>
+<li>다른 프로그램 언어에서 게터/세터 함수를 사용하는 것이 일반적이라고 해서 파이썬에서 이 방식을 꼭 따라야 할 의무는 없음</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="내장-컨테이너-사용">내장 컨테이너 사용<a class="anchor-link" href="#%EB%82%B4%EC%9E%A5-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-%EC%82%AC%EC%9A%A9">¶</a>
+</h5>
+<ul>
+<li>문자열, 튜플, 리스트, 세트, 딕셔너리 등 내장된 데이터 타입은 모두 C로 구현되어 있고 따라서 실행 속도가 상대적으로 빠름</li>
+<li>만약 이런 것 대신에 스스로 자료 구조를 만들고 싶다면(예: 링크드 리스트, 밸런스 트리 등), 내장된 자료 구조의 속도를 따라잡기는 거의 불가능</li>
+<li>따라서 괜히 고생하지 마록 이미 제공되고 있는 것을 사용하도록 하자</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="불필요한-자료-구조-생성이나-복사-피하기">불필요한 자료 구조 생성이나 복사 피하기<a class="anchor-link" href="#%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C-%EC%9E%90%EB%A3%8C-%EA%B5%AC%EC%A1%B0-%EC%83%9D%EC%84%B1%EC%9D%B4%EB%82%98-%EB%B3%B5%EC%82%AC-%ED%94%BC%ED%95%98%EA%B8%B0">¶</a>
+</h5>
+<ul>
+<li>프로그래머들은 종졸 불필요한 자료 구조를 만들기도 함</li>
+<li>예를 들어 다음 코드를 보자</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [48]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">sequence</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [50]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">]</span>
+<span class="n">values</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[50]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [51]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+<span class="n">squares</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[51]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>아마도 여러 값을 리스트에 넣고 그 값으로 리스트 컴프리헨션과 같은 작업을 하려는 의도일 것</li>
+<li>하지만 첫 번째 나오는 리스트는 전혀 필요가 없다.</li>
+<li>앞에 나온 코드는 다음과 같이 개선할 수 있음</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [52]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">]</span>
+<span class="n">squares</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[52]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>이와 관련해서, 파이썬의 값 공유에 대해 편집증적인 반응을 보이는 프로그래머가 작성한 코드를 주의하도록 함</li>
+<li>copy.deepcopy()와 같은 함수를 남용했다면, 이 코드를 작성한 사람은 파이썬의 메모리 모델을 믿지 못하거나 잘 이해하지 못했을 확률이 크다.</li>
+<li>그런 코드에서는, 여러 복사본을 제거해도 안전할 것</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="토론">토론<a class="anchor-link" href="#%ED%86%A0%EB%A1%A0">¶</a>
+</h4>
+<ul>
+<li>
+<strong>최적화를 하기 전</strong>에, 우선적으로 사용하고 있는 <strong>알고리즘에 대한 연구를 하는 것이 좋음</strong>
+</li>
+<li>O(n**2) 알고리즘을 사용한 코드를 아무리 최적화한다고 해도 O(n log n) 알고리즘을 사용한 코드보다 실행 속도가 훨씬 느릴 것</li>
+<li>여전히 최적화를 해야 한다고 생각하면, 우선 큰 그림부터 그려 보도록 하자</li>
+<li>일반적으로 프로그램의 <strong>모든 부분에 최적화를 적용</strong>하면 코드를 <strong>읽기도 어렵고 이해하기도 어렵게</strong> 만든다.</li>
+<li>세세한 최적화 결과를 해설할 때는 주의해야 함</li>
+<li>예를 들어 딕셔너리를 생성하는 다음 두 코드를 살펴보자</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [53]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s1">'name'</span><span class="p">:</span> <span class="s1">'AAPL'</span><span class="p">,</span>
+<span class="s1">'shares'</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+<span class="s1">'price'</span><span class="p">:</span> <span class="mf">534.22</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [54]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'AAPL'</span><span class="p">,</span> <span class="n">shares</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mf">534.22</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [55]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> a
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>10000000 loops, best of 3: 25.9 ns per loop
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [56]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> b
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>10000000 loops, best of 3: 28.3 ns per loop
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>두번째(b) 방식의 코드가 더 간결(키 이름을 따옴표로 묶을 필요가 없다)</li>
+<li>하지만 두 코드를 놓고 성능을 비교해 보면, dict()를 사용한 것이 3 배 정도 느리다!</li>
+<li>그렇다면 이제 dict()를 사용한 모든 부분을 찾아서 첫번째(a) 방식으로 모두 변환하는 것이 좋을까?</li>
+<li>영리한 프로그래머라면 이 부분을 수정하지 않고 그냥 둘 것</li>
+<li>그보다는 <strong>내부 순환문</strong>과 같이 <strong>실행 속도에 직접적으로 영향을 주는 곳을 찾아 최적화</strong>하는 것이 좋음</li>
+<li>그 이외의 장소에 대해서는 이 속도 차이가 거의 아무런 차이도 만들지 못함</li>
+<li>만약 작성중인 프로그램의 성능이 이번 레시피에서 다룬 최적화로는 어림없을 만큼 중요하다면 <strong>just-in-time(JIT) 컴파일 기술에 기반한 도구 사용</strong>을 고려하도록 하자</li>
+<li>예를 들어 PyPy 프로젝트는 파이썬 인터프리터의 대안 구현으로, 프로그램 실행을 분석하고 빈번히 실행되는 부분에 대해서 네이티브 코드를 생성함</li>
+<li>이 기술을 사용하면 파이썬 프로그램의 실행 속도가 비약적으로 증가하고, 때로는 C로 작성한 프로그램 속도에 근접하거나 심지어 더 빨라지기도 함</li>
+<li>하지만 안타깝게도 이 책을 집필하고 있는 현재 PyPy는 파이썬3를 완벽히 지원하지 않는다.</li>
+<li>Numba는 다이내믹 컴파일로서 데코레이터로 최적화하고 싶은 파이썬 함수에 주석을 단다.</li>
+<li>이런 함수는 LLVM을 사용해서 네이티브 코드로 컴파일 됨</li>
+<li>이 역시 엄청난 성능 향상을 가져오지만, PyPy와 마찬가지로 파이썬3 지원에 대해서는 아직 미비한 점이 존재</li>
+<li>마지막으로 존 아우스터하우트(John Ousterhout)의 <strong>"완벽한 성능 향상은 동작하지 않는 것을 동작 상태로 변이하는 것이다"</strong>라는 말을 꼭 기억하자</li>
+<li>꼭 필요하지 않다면 최적화에 대해서 걱정하지 않아도 좋다.</li>
+<li>프로그램이 <strong>올바르게 동작</strong>하도록 만드는 것이 빠르게 실행하도록 만드는 것보다 <strong>훨씬 중요</strong>하다(<strong>적어도 초기에는</strong>)</li>
+</ul>
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+        </div>
+                <ul class="pager hidden-print">
+<li class="previous">
+                <a href="../ch14-01/" rel="prev" title="ch14_01">Previous post</a>
+            </li>
+        </ul>
+</div>
+                    <footer id="footer"><p>Contents © 2016         <a href="mailto:n.tesla@example.com">Nikola Tesla</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+    </section><script src="../../../../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>

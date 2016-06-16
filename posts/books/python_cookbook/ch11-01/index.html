@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>ch11_01 | My Nikola Site</title>
+<link href="../../../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../../rss.xml">
+<link rel="canonical" href="https://example.com/posts/books/python_cookbook/ch11-01/">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="Nikola Tesla">
+<meta property="og:site_name" content="My Nikola Site">
+<meta property="og:title" content="ch11_01">
+<meta property="og:url" content="https://example.com/posts/books/python_cookbook/ch11-01/">
+<meta property="og:description" content="11. 네트워크와 웹 프로그래밍¶
+start: 2014-11-04
+end: 2014-11-
+
+
+이번장은 네트워크와 분산 애플리케이션에 파이썬을 사용하는 주제를 다룸. 크게 2가지
+기존 서버에 접속하는 클라이언트를 만드는 방법
+파이썬으로 서버로 동작하는 네트워크 서비스를 구현 
+
+
+또한 인터프리터와 통신하고 협업하는 예제도 제공
+
+
+
+
+
+
+
+
+
+
+11.1 클">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2016-06-15T19:51:40-09:00">
+</head>
+<body>
+    <section class="social"><ul>
+<li><a href="../../../../index.html" title="Home"><i class="icon-home"></i></a></li>
+            <li><a href="../../../../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
+            <li><a href="../../../../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
+            <li><a href="../../../../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
+            <li><a href="https://getnikola.com" title="About me"><i class="icon-user"></i></a></li>
+            <li><a href="https://twitter.com/getnikola" title="My Twitter"><i class="icon-twitter"></i></a></li>
+            <li><a href="https://github.com/getnikola" title="My Github"><i class="icon-github"></i></a></li>
+
+        </ul></section><section class="page-content"><div class="content" rel="main">
+    <div class="post">
+        <h1 class="p-name entry-title" itemprop="headline name">ch11_01</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2016-06-15T19:51:40-09:00">2016-06-15 19:51</time>
+            
+                      |  
+        <a href="index.ipynb" id="sourcelink">Source</a>
+
+            </div>
+            
+        </div>
+        <div class="body">
+            <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="11.-네트워크와-웹-프로그래밍">11. 네트워크와 웹 프로그래밍<a class="anchor-link" href="#11.-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EC%99%80-%EC%9B%B9-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D">¶</a>
+</h2>
+<ul>
+<li>start: 2014-11-04</li>
+<li>end: 2014-11-</li>
+</ul>
+<ul>
+<li>이번장은 네트워크와 분산 애플리케이션에 파이썬을 사용하는 주제를 다룸. 크게 2가지<ol>
+<li>기존 서버에 접속하는 클라이언트를 만드는 방법</li>
+<li>파이썬으로 서버로 동작하는 네트워크 서비스를 구현 </li>
+</ol>
+</li>
+<li>또한 인터프리터와 통신하고 협업하는 예제도 제공</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="11.1-클라이언트로-HTTP-서비스와-통신">11.1 클라이언트로 HTTP 서비스와 통신<a class="anchor-link" href="#11.1-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EB%A1%9C-HTTP-%EC%84%9C%EB%B9%84%EC%8A%A4%EC%99%80-%ED%86%B5%EC%8B%A0">¶</a>
+</h3>
+<h4 id="문제">문제<a class="anchor-link" href="#%EB%AC%B8%EC%A0%9C">¶</a>
+</h4>
+<ul>
+<li>클라이언트로서 HTTP를 통해 여러 서비스에 접속해야 함</li>
+<li>예를 들어 REST 기반 API로 통신하거나 데이터를 받아야 함</li>
+</ul>
+<h4 id="해결">해결<a class="anchor-link" href="#%ED%95%B4%EA%B2%B0">¶</a>
+</h4>
+<ul>
+<li>간단한 문제는 urllib.request 모듈을 사용하면 쉽게 해결 가능</li>
+<li>예를 들어 원격 서비스에 대한 간단한 HTTP GET 요청은 다음과 같이 함</li>
+</ul>
+<ul>
+<li><a href="http://httpbin.org/">httpbin(1): HTTP Client Testing Service</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">urllib</span> <span class="k">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">parse</span>
+
+<span class="c1"># 접속할 URL</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">'http://httpbin.org/get'</span>
+
+<span class="c1"># (있다면) 쿼리 파라미터 딕셔너리</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'name1'</span><span class="p">:</span> <span class="s1">'value1'</span><span class="p">,</span>
+    <span class="s1">'name2'</span><span class="p">:</span> <span class="s1">'value2'</span>
+<span class="p">}</span>
+
+<span class="c1"># 쿼리 문자열 인코드</span>
+<span class="n">querystring</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="c1"># GET 요청 후 응답 읽기</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span> <span class="o">+</span> <span class="s1">'?'</span> <span class="o">+</span> <span class="n">querystring</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+  "args": {
+    "name1": "value1", 
+    "name2": "value2"
+  }, 
+  "headers": {
+    "Accept-Encoding": "identity", 
+    "Connect-Time": "1", 
+    "Connection": "close", 
+    "Host": "httpbin.org", 
+    "Total-Route-Time": "0", 
+    "User-Agent": "Python-urllib/3.4", 
+    "Via": "1.1 vegur", 
+    "X-Request-Id": "24598322-b114-4be2-961a-a739edf70506"
+  }, 
+  "origin": "58.74.112.37", 
+  "url": "http://httpbin.org/get?name2=value2&amp;name1=value1"
+}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>POST 메소드로 쿼리 파라미터를 보내야 한다면, 인코딩 한 후 urlopen()에 옵션 매개변수로 넣음</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">urllib</span> <span class="k">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">parse</span>
+
+<span class="c1"># 접속할 URL</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">'http://httpbin.org/post'</span>
+
+<span class="c1"># (있다면) 쿼리 파라미터 딕셔너리</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'name1'</span><span class="p">:</span> <span class="s1">'value1'</span><span class="p">,</span>
+    <span class="s1">'name2'</span><span class="p">:</span> <span class="s1">'value2'</span>
+<span class="p">}</span>
+
+<span class="c1"># 쿼리 문자열 인코드</span>
+<span class="n">querystring</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="c1"># POST 요청 후 응답 읽기</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">querystring</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'ascii'</span><span class="p">))</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+  "args": {}, 
+  "data": "", 
+  "files": {}, 
+  "form": {
+    "name1": "value1", 
+    "name2": "value2"
+  }, 
+  "headers": {
+    "Accept-Encoding": "identity", 
+    "Connect-Time": "1", 
+    "Connection": "close", 
+    "Content-Length": "25", 
+    "Content-Type": "application/x-www-form-urlencoded", 
+    "Host": "httpbin.org", 
+    "Total-Route-Time": "0", 
+    "User-Agent": "Python-urllib/3.4", 
+    "Via": "1.1 vegur", 
+    "X-Request-Id": "d9ed793f-fd37-4ad1-bc21-bff5aecda6eb"
+  }, 
+  "json": null, 
+  "origin": "58.74.112.37", 
+  "url": "http://httpbin.org/post"
+}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>사용자-에이전트 필드(user-agent field)를 수정하는 등 내보내는 요청에 커스텀 HTTP 헤더를 제공해야 한다면, 그 값을 담은 딕셔너리를 만들고 Request 인스턴스를 만든 후 urlopen()에 전달</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">urllib</span> <span class="k">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">parse</span>
+
+<span class="c1"># 추가적인 헤더</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'User-agent'</span><span class="p">:</span> <span class="s1">'none/ofyourbusiness'</span><span class="p">,</span>
+    <span class="s1">'Spam'</span><span class="p">:</span> <span class="s1">'Eggs'</span>
+<span class="p">}</span>
+
+<span class="n">req</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">querystring</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'ascii'</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="c1"># 요청 후 응답 읽기</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+  "args": {}, 
+  "data": "", 
+  "files": {}, 
+  "form": {
+    "name1": "value1", 
+    "name2": "value2"
+  }, 
+  "headers": {
+    "Accept-Encoding": "identity", 
+    "Connect-Time": "1", 
+    "Connection": "close", 
+    "Content-Length": "25", 
+    "Content-Type": "application/x-www-form-urlencoded", 
+    "Host": "httpbin.org", 
+    "Spam": "Eggs", 
+    "Total-Route-Time": "0", 
+    "User-Agent": "none/ofyourbusiness", 
+    "Via": "1.1 vegur", 
+    "X-Request-Id": "369e9a2b-1e1b-40f8-9ed7-e6b96c04063d"
+  }, 
+  "json": null, 
+  "origin": "58.74.112.37", 
+  "url": "http://httpbin.org/post"
+}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">urllib</span> <span class="k">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">parse</span>
+
+<span class="c1"># 접속할 URL</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">'http://httpbin.org/get'</span>
+
+<span class="c1"># (있다면) 쿼리 파라미터 딕셔너리</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'name1'</span><span class="p">:</span> <span class="s1">'value1'</span><span class="p">,</span>
+    <span class="s1">'name2'</span><span class="p">:</span> <span class="s1">'value2'</span>
+<span class="p">}</span>
+
+<span class="c1"># 쿼리 문자열 인코드</span>
+<span class="n">querystring</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">req</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span> <span class="o">+</span> <span class="s1">'?'</span> <span class="o">+</span> <span class="n">querystring</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="c1"># GET 요청 후 응답 읽기</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+  "args": {
+    "name1": "value1", 
+    "name2": "value2"
+  }, 
+  "headers": {
+    "Accept-Encoding": "identity", 
+    "Connect-Time": "1", 
+    "Connection": "close", 
+    "Host": "httpbin.org", 
+    "Spam": "Eggs", 
+    "Total-Route-Time": "0", 
+    "User-Agent": "none/ofyourbusiness", 
+    "Via": "1.1 vegur", 
+    "X-Request-Id": "b67d284a-a132-4098-8959-4b25d37d5446"
+  }, 
+  "origin": "58.74.112.37", 
+  "url": "http://httpbin.org/get?name2=value2&amp;name1=value1"
+}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>앞에 나온 예제보다 더 복잡한 통신을 해야 한다면 <a href="http://docs.python-requests.org/en/latest/">requests</a> 라이브러리 사용을 고려해 보자</li>
+<li>예를 들어 앞에 나온 것과 동일한 requests 코드를 보자</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1"># 접속 URL</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">'http://httpbin.org/post'</span>
+
+<span class="c1"># (있다면) 쿼리 파라미터 딕셔너리</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'name1'</span><span class="p">:</span> <span class="s1">'value1'</span><span class="p">,</span>
+    <span class="s1">'name2'</span><span class="p">:</span> <span class="s1">'value2'</span>
+<span class="p">}</span>
+
+<span class="c1"># 추가적인 헤더</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'User-agent'</span><span class="p">:</span> <span class="s1">'none/ofyourbusiness'</span><span class="p">,</span>
+    <span class="s1">'Spam'</span><span class="p">:</span> <span class="s1">'Eggs'</span>
+<span class="p">}</span>
+
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="c1"># 요청이 반환한 텍스트 디코드</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">text</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+  "args": {}, 
+  "data": "", 
+  "files": {}, 
+  "form": {
+    "name1": "value1", 
+    "name2": "value2"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Connect-Time": "1", 
+    "Connection": "close", 
+    "Content-Length": "25", 
+    "Content-Type": "application/x-www-form-urlencoded", 
+    "Host": "httpbin.org", 
+    "Spam": "Eggs", 
+    "Total-Route-Time": "0", 
+    "User-Agent": "none/ofyourbusiness", 
+    "Via": "1.1 vegur", 
+    "X-Request-Id": "55068b13-9f3a-4a8e-a13a-111613acbf88"
+  }, 
+  "json": null, 
+  "origin": "58.74.112.37", 
+  "url": "http://httpbin.org/post"
+}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>requests 기능 중, 요청에 대한 응답을 어떻게 반환하는지를 주목해야 함</li>
+<li>앞에 나온 것처럼 resp.text 속성에, 요청을 Unicode 디코딩한 텍스트가 들어있음</li>
+<li>하지만 resp.content에 접근하면 raw 바이너리를 받는다</li>
+<li>반면에 resp.json에 접근하면 JSON으로 해석된 응답을 얻을 수 있음</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">resp</span><span class="o">.</span><span class="n">content</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[23]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>b'{\n  "args": {}, \n  "data": "", \n  "files": {}, \n  "form": {\n    "name1": "value1", \n    "name2": "value2"\n  }, \n  "headers": {\n    "Accept": "*/*", \n    "Accept-Encoding": "gzip, deflate", \n    "Connect-Time": "1", \n    "Connection": "close", \n    "Content-Length": "25", \n    "Content-Type": "application/x-www-form-urlencoded", \n    "Host": "httpbin.org", \n    "Spam": "Eggs", \n    "Total-Route-Time": "0", \n    "User-Agent": "none/ofyourbusiness", \n    "Via": "1.1 vegur", \n    "X-Request-Id": "55068b13-9f3a-4a8e-a13a-111613acbf88"\n  }, \n  "json": null, \n  "origin": "58.74.112.37", \n  "url": "http://httpbin.org/post"\n}'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">'headers'</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{'args': {},
+ 'data': '',
+ 'files': {},
+ 'form': {'name1': 'value1', 'name2': 'value2'},
+ 'headers': {'Accept': '*/*',
+             'Accept-Encoding': 'gzip, deflate',
+             'Connect-Time': '1',
+             'Connection': 'close',
+             'Content-Length': '25',
+             'Content-Type': 'application/x-www-form-urlencoded',
+             'Host': 'httpbin.org',
+             'Spam': 'Eggs',
+             'Total-Route-Time': '0',
+             'User-Agent': 'none/ofyourbusiness',
+             'Via': '1.1 vegur',
+             'X-Request-Id': '55068b13-9f3a-4a8e-a13a-111613acbf88'},
+ 'json': None,
+ 'origin': '58.74.112.37',
+ 'url': 'http://httpbin.org/post'}
+
+&lt;class 'dict'&gt;
+{'User-Agent': 'none/ofyourbusiness', 'Accept-Encoding': 'gzip, deflate', 'Connect-Time': '1', 'Accept': '*/*', 'Connection': 'close', 'Total-Route-Time': '0', 'X-Request-Id': '55068b13-9f3a-4a8e-a13a-111613acbf88', 'Content-Length': '25', 'Spam': 'Eggs', 'Content-Type': 'application/x-www-form-urlencoded', 'Via': '1.1 vegur', 'Host': 'httpbin.org'}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>requests로 HEAD 요청을 만들고 응답으로부터 헤더 데이터를 추출하는 예제</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="s1">'http://www.python.org/index.html'</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">status</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span>
+<span class="c1"># last_modified = resp.headers['last-modified']</span>
+<span class="c1"># content_type = resp.headers['Content-Type']</span>
+<span class="n">content_length</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">'Content-Length'</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+<span class="c1"># print(last_modified)</span>
+<span class="c1"># print(content_type)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">content_length</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{'X-Served-By': 'cache-ty67-TYO', 'X-Cache': 'MISS', 'Date': 'Tue, 04 Nov 2014 05:31:48 GMT', 'Connection': 'close', 'Retry-After': '0', 'Content-Length': '0', 'Location': 'https://www.python.org/index.html', 'X-Cache-Hits': '0', 'Via': '1.1 varnish', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains', 'Accept-Ranges': 'bytes', 'Server': 'Varnish'}
+
+301
+0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>다음은 기본 인증을 사용해서 파이썬 패키지 인덱스(Python Package Index)에 로그인하는 requests 예제</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'http://pypi.python.org/pypi?:action=login'</span><span class="p">,</span>
+                    <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="s1">'user'</span><span class="p">,</span> <span class="s1">'password'</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;strong&gt;Login required&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;
+
+Incorrect password&lt;br /&gt;&lt;br /&gt;
+
+&lt;p&gt;If you are a new user, &lt;a href="/pypi?:action=register_form"&gt;please
+register&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you have forgotten your password, you can have it
+&lt;a href="/pypi?:action=forgotten_password_form"&gt;reset for you&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You may also login or register using &lt;a href="/pypi?:action=openid"&gt;OpenID&lt;/a&gt;
+    &lt;a href="https://www.google.com/accounts/o8/id"&gt;&lt;img src="https://www.google.com/favicon.ico" title="Google"/&gt;&lt;/a&gt;
+    
+    &lt;a href="https://login.launchpad.net/"&gt;&lt;img src="https://launchpad.net/@@/launchpad.png" title="Launchpad"/&gt;&lt;/a&gt;
+    &lt;/p&gt;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>다음은 한 요청의 HTTP 쿠키를 다음으로 넘기는 requests 예제</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [46]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">'http://www.python.org'</span>
+
+<span class="c1"># 첫 번째 요청</span>
+<span class="n">resp1</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resp1</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resp1</span><span class="o">.</span><span class="n">cookies</span><span class="p">)</span>
+
+<span class="c1"># 첫 번째 요청으로부터 쿠키를 받은 두 번째 요청</span>
+<span class="n">resp2</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="n">resp1</span><span class="o">.</span><span class="n">cookies</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>200
+
+&lt;RequestsCookieJar[]&gt;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [49]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">'http://docs.python-requests.org'</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">cookies</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;RequestsCookieJar[]&gt;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+
+        </div>
+                <ul class="pager hidden-print">
+<li class="previous">
+                <a href="../ch10-02/" rel="prev" title="ch10_02">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../ch12-01/" rel="next" title="ch12_01">Next post</a>
+            </li>
+        </ul>
+</div>
+                    <footer id="footer"><p>Contents © 2016         <a href="mailto:n.tesla@example.com">Nikola Tesla</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+    </section><script src="../../../../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>
