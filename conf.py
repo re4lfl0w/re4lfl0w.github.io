@@ -142,9 +142,9 @@ NAVIGATION_LINKS = {
         ('/archive.html', 'Archives', 'icon-folder-open-alt'),
         ('/categories/index.html', 'Tags', 'icon-tags'),
         ('/rss.xml', 'RSS', 'icon-rss'),
-        ('https://getnikola.com', 'About me', 'icon-user'),
-        ('https://twitter.com/getnikola', 'My Twitter', 'icon-twitter'),
-        ('https://github.com/getnikola', 'My Github', 'icon-github'),
+        #('https://getnikola.com', 'About me', 'icon-user'),
+        #('https://twitter.com/getnikola', 'My Twitter', 'icon-twitter'),
+        ('https://github.com/re4lfl0w', 'My Github', 'icon-github'),
     )
 }
 
@@ -487,7 +487,7 @@ FRONT_INDEX_HEADER = {
 }
 
 # Create per-month archives instead of per-year
-# CREATE_MONTHLY_ARCHIVE = False
+# CREATE_MONTHLY_ARCHIVE = True
 # Create one large archive instead of per-year
 # CREATE_SINGLE_ARCHIVE = False
 # Create year, month, and day archives each with a (long) list of posts
