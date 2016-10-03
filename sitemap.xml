@@ -19,23 +19,11 @@
  </url>
  <url>
   <loc>https://example.com/archive.html</loc>
-  <lastmod>2016-06-16T10:19:00Z</lastmod>
- </url>
- <url>
-  <loc>https://example.com/authors/</loc>
-  <lastmod>2016-10-03T20:04:00Z</lastmod>
- </url>
- <url>
-  <loc>https://example.com/authors/nikola-tesla/</loc>
-  <lastmod>2016-10-03T20:04:00Z</lastmod>
- </url>
- <url>
-  <loc>https://example.com/authors/roberto-alsina/</loc>
-  <lastmod>2016-10-03T20:04:00Z</lastmod>
+  <lastmod>2016-10-03T20:19:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/categories/</loc>
-  <lastmod>2016-10-03T20:03:00Z</lastmod>
+  <lastmod>2016-10-03T20:19:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/categories/blog/</loc>
@@ -44,6 +32,10 @@
  <url>
   <loc>https://example.com/categories/cat_nikola/</loc>
   <lastmod>2016-06-16T04:29:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/categories/codewars/</loc>
+  <lastmod>2016-10-03T20:19:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/categories/demo/</loc>
@@ -75,7 +67,7 @@
  </url>
  <url>
   <loc>https://example.com/listings/hello.py.html</loc>
-  <lastmod>2016-06-16T08:58:00Z</lastmod>
+  <lastmod>2016-10-03T20:10:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/posts/ch01/</loc>
@@ -84,6 +76,14 @@
  <url>
   <loc>https://example.com/posts/good-rst/</loc>
   <lastmod>2016-06-16T04:32:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/kata/length-of-the-line-segment/</loc>
+  <lastmod>2016-10-03T20:17:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://example.com/posts/length-of-the-line-segment/</loc>
+  <lastmod>2016-10-03T20:20:00Z</lastmod>
  </url>
  <url>
   <loc>https://example.com/posts/ohho/</loc>

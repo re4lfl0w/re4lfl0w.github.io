@@ -27,26 +27,261 @@ article: http://ogp.me/ns/article#
 
         </ul></section><section class="page-content"><div class="content" rel="main">
         <div class="post">
-            <h1 class="title"><a href="posts/ohho/">ohho</a></h1>
+            <h1 class="title"><a href="posts/length-of-the-line-segment/">length of the line segment</a></h1>
             <div class="meta">
                 <div class="authordate">
-                    <time class="timeago" datetime="2016-06-16T19:01:45+09:00">2016-06-16 19:01</time>
+                    <time class="timeago" datetime="2016-10-04T05:16:00+09:00">2016-10-04 05:16</time>
 </div>
                 <div class="stats">
-                                <a href="posts/ohho/#disqus_thread" data-disqus-identifier="cache/posts/ohho.html">Comments</a>
+                                <a href="posts/length-of-the-line-segment/#disqus_thread" data-disqus-identifier="cache/posts/length_of_the_line_segment.html">Comments</a>
 
 
                 </div>
-                
+                        <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="categories/codewars/" rel="tag">codewars</a></li>
+        </ul>
+</div>
+
             </div>
             <div class="body">
-                <div>
-<p>Write your post here.</p>
-<p>"OK, a short post to give you some material to play with over the weekend ;-). ",
-" ",
-"Today, I woke up early and whereas I was drinking a <em>mate</em> (a native drink here in Argentina) for breakfast, I remember a tweet from [Nikhil Sonnad](<a class="reference external" href="https://twitter.com/nsonnad">https://twitter.com/nsonnad</a>) where I was mentioned: ",
-" ",</p>
-<p class="more"><a href="posts/ohho/">Read more…</a></p>
+                <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="length-of-the-line-segment">length-of-the-line-segment<a class="anchor-link" href="posts/length-of-the-line-segment/#length-of-the-line-segment">¶</a>
+</h2>
+<ul>
+<li><a href="http://www.codewars.com/kata/length-of-the-line-segment">length-of-the-line-segment</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Problem">Problem<a class="anchor-link" href="posts/length-of-the-line-segment/#Problem">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># package로 인식을 못해서 어쩔 수 없이 이렇게 import함</span>
+<span class="o">%</span><span class="k">cd</span> ..
+<span class="kn">from</span> <span class="nn">helper.war</span> <span class="k">import</span> <span class="n">Kata</span>
+<span class="o">%</span><span class="k">cd</span> kata/
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>/Users/re4lfl0w/Documents/_git/codewars
+/Users/re4lfl0w/Documents/_git/codewars/kata
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">kata</span> <span class="o">=</span> <span class="n">Kata</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>2016-10-04 04:29:07: helper.war - INFO - Start func: set_access_key
+INFO:helper.war:Start func: set_access_key
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">challenge_url</span> <span class="o">=</span> <span class="s1">'http://www.codewars.com/kata/length-of-the-line-segment/python'</span>
+<span class="n">description</span> <span class="o">=</span> <span class="n">kata</span><span class="o">.</span><span class="n">get_description_in_code_challenge</span><span class="p">(</span><span class="n">challenge_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>2016-10-04 04:29:08: helper.war - INFO - Start func: get_description_in_code_challenge
+INFO:helper.war:Start func: get_description_in_code_challenge
+2016-10-04 04:29:08: helper.war - INFO - Start func: set_code_challenge
+INFO:helper.war:Start func: set_code_challenge
+2016-10-04 04:29:08: helper.war - INFO - Start func: get_cleaned_challenge
+INFO:helper.war:Start func: get_cleaned_challenge
+2016-10-04 04:29:08: helper.war - INFO - challenge: length-of-the-line-segment
+INFO:helper.war:challenge: length-of-the-line-segment
+2016-10-04 04:29:09: helper.war - INFO - challenge_json: {'unresolved': {'issues': 0, 'suggestions': 0}, 'createdAt': '2015-09-10T12:32:53Z', 'description': 'Find the length between 2 co-ordinates.  The co-ordinates are made of integers between -20 and 20 and will be given in the form of a 2D array:\n\n(0,0) and (5,-7) would be [ [ 0 , 0 ] , [ 5, -7 ] ]\n\nThe function must return the answer rounded to 2 decimal places in the form of a string.\n\n```javascript\nlengthOfLine([ [ 0 , 0 ] , [ 5, -7 ] ]); =&gt; "8.60"\n```\n```python\nlength_of_line([[0, 0], [5, -7]]) =&gt; "8.60"\n```\n```ruby\nlength_of_line([[0, 0], [5, -7]]) # =&gt; "8.60"\n```\n\nIf the 2 given co-ordinates are the same, the returned length should be "0.00" \n', 'voteScore': 50, 'totalStars': 14, 'slug': 'length-of-the-line-segment', 'contributorsWanted': True, 'createdBy': {'url': 'https://www.codewars.com/users/JMurphyWeb', 'username': 'JMurphyWeb'}, 'approvedBy': {'url': 'https://www.codewars.com/users/Balkoth', 'username': 'Balkoth'}, 'id': '55f1786c296de4952f000014', 'tags': ['Fundamentals', 'Mathematics', 'Algorithms', 'Logic', 'Numbers', 'Geometry', 'Algebra'], 'category': 'reference', 'languages': ['javascript', 'python', 'ruby'], 'totalCompleted': 785, 'totalAttempts': 1805, 'publishedAt': '2015-09-10T12:32:44Z', 'name': 'Length of the line segment', 'url': 'https://www.codewars.com/kata/length-of-the-line-segment', 'approvedAt': '2015-10-07T18:32:14Z', 'rank': {'id': -7, 'name': '7 kyu', 'color': 'white'}}
+INFO:helper.war:challenge_json: {'unresolved': {'issues': 0, 'suggestions': 0}, 'createdAt': '2015-09-10T12:32:53Z', 'description': 'Find the length between 2 co-ordinates.  The co-ordinates are made of integers between -20 and 20 and will be given in the form of a 2D array:\n\n(0,0) and (5,-7) would be [ [ 0 , 0 ] , [ 5, -7 ] ]\n\nThe function must return the answer rounded to 2 decimal places in the form of a string.\n\n```javascript\nlengthOfLine([ [ 0 , 0 ] , [ 5, -7 ] ]); =&gt; "8.60"\n```\n```python\nlength_of_line([[0, 0], [5, -7]]) =&gt; "8.60"\n```\n```ruby\nlength_of_line([[0, 0], [5, -7]]) # =&gt; "8.60"\n```\n\nIf the 2 given co-ordinates are the same, the returned length should be "0.00" \n', 'voteScore': 50, 'totalStars': 14, 'slug': 'length-of-the-line-segment', 'contributorsWanted': True, 'createdBy': {'url': 'https://www.codewars.com/users/JMurphyWeb', 'username': 'JMurphyWeb'}, 'approvedBy': {'url': 'https://www.codewars.com/users/Balkoth', 'username': 'Balkoth'}, 'id': '55f1786c296de4952f000014', 'tags': ['Fundamentals', 'Mathematics', 'Algorithms', 'Logic', 'Numbers', 'Geometry', 'Algebra'], 'category': 'reference', 'languages': ['javascript', 'python', 'ruby'], 'totalCompleted': 785, 'totalAttempts': 1805, 'publishedAt': '2015-09-10T12:32:44Z', 'name': 'Length of the line segment', 'url': 'https://www.codewars.com/kata/length-of-the-line-segment', 'approvedAt': '2015-10-07T18:32:14Z', 'rank': {'id': -7, 'name': '7 kyu', 'color': 'white'}}
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Find the length between 2 co-ordinates.  The co-ordinates are made of integers between -20 and 20 and will be given in the form of a 2D array:
+
+(0,0) and (5,-7) would be [ [ 0 , 0 ] , [ 5, -7 ] ]
+
+The function must return the answer rounded to 2 decimal places in the form of a string.
+
+```javascript
+lengthOfLine([ [ 0 , 0 ] , [ 5, -7 ] ]); =&gt; "8.60"
+```
+```python
+length_of_line([[0, 0], [5, -7]]) =&gt; "8.60"
+```
+```ruby
+length_of_line([[0, 0], [5, -7]]) # =&gt; "8.60"
+```
+
+If the 2 given co-ordinates are the same, the returned length should be "0.00" 
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[2]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">abs</span><span class="p">(</span><span class="mi">8</span><span class="o">-</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[3]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>13</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Logic">Logic<a class="anchor-link" href="posts/length-of-the-line-segment/#Logic">¶</a>
+</h3>
+<ul>
+<li>
+<a href="http://mathbang.net/138">좌표평면에서 두 점 사이의 거리 | 수학방</a><ul>
+<li>영어로 써져 있어서 엄청 어려워 보이는데 별거 없다. 그냥 중학교때 배운 좌표평면에서 두 점 사이의 거리 구하는 공식이다...</li>
+</ul>
+</li>
+<li>첫번째 x값 - 두번째 x값</li>
+<li>첫번째 y값 - 두번째 y값</li>
+<li>그 결과값을 더하고</li>
+<li>root 취해준다.</li>
+<li>이게 뭘 하는건지는 확실하지 않다...</li>
+<li>일단 로직이 이렇게 된다는 것을 알 수 있다.<p class="more"><a href="posts/length-of-the-line-segment/">Read more…</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
             </div>
         </div>
@@ -110,65 +345,6 @@ article: http://ogp.me/ns/article#
 </div>
 </div>
 </div>
-</div>
-            </div>
-        </div>
-        <div class="post">
-            <h1 class="title"><a href="posts/good-rst/">Good rst</a></h1>
-            <div class="meta">
-                <div class="authordate">
-                    <time class="timeago" datetime="2016-06-16T13:32:18+09:00">2016-06-16 13:32</time>
-</div>
-                <div class="stats">
-                                <a href="posts/good-rst/#disqus_thread" data-disqus-identifier="cache/posts/good-rst.html">Comments</a>
-
-
-                </div>
-                
-            </div>
-            <div class="body">
-                <p>Write your post here.</p>
-            </div>
-        </div>
-        <div class="post">
-            <h1 class="title"><a href="posts/welcome-to-nikola/">Welcome to Nikola</a></h1>
-            <div class="meta">
-                <div class="authordate">
-                    <time class="timeago" datetime="2012-03-30T23:00:00-03:00">2012-03-30 23:00</time>
-</div>
-                <div class="stats">
-                                <a href="posts/welcome-to-nikola/#disqus_thread" data-disqus-identifier="cache/posts/1.html">Comments</a>
-
-
-                </div>
-                        <div itemprop="keywords" class="tags">
-        <ul>
-        Tags : 
-           <li><a class="tag p-category" href="categories/blog/" rel="tag">blog</a></li>
-           <li><a class="tag p-category" href="categories/demo/" rel="tag">demo</a></li>
-           <li><a class="tag p-category" href="categories/nikola/" rel="tag">nikola</a></li>
-           <li><a class="tag p-category" href="categories/python/" rel="tag">python</a></li>
-        </ul>
-</div>
-
-            </div>
-            <div class="body">
-                <div>
-<div class="figure">
-<a class="reference external image-reference" href="https://farm1.staticflickr.com/138/352972944_4f9d568680_z.jpg?zz=1"><img alt="Nikola Tesla Corner by nicwest, on Flickr" class="thumbnail" src="https://farm1.staticflickr.com/138/352972944_4f9d568680.jpg"></a>
-</div>
-<p>If you can see this in a web browser, it means you managed to install Nikola,
-and build a site using it. Congratulations!</p>
-<p>Next steps:</p>
-<ul class="simple">
-<li><a class="reference external" href="stories/handbook/">Read the manual</a></li>
-<li><a class="reference external" href="https://getnikola.com">Visit the Nikola website to learn more</a></li>
-<li><a class="reference external" href="galleries/demo/">See a demo photo gallery</a></li>
-<li><a class="reference external" href="stories/listings-demo/">See a demo listing</a></li>
-<li><a class="reference external" href="stories/slides-demo/">See a demo slideshow</a></li>
-<li><a class="reference external" href="stories/dr-nikolas-vendetta/">See a demo of a longer text</a></li>
-</ul>
-<p>Send feedback to <a class="reference external" href="mailto:info@getnikola.com">info@getnikola.com</a>!</p>
 </div>
             </div>
         </div>
