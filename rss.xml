@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>My Nikola Site</title><link>https://example.com/</link><description>This is a demo site for Nikola.</description><atom:link type="application/rss+xml" rel="self" href="https://example.com/rss.xml"></atom:link><language>en</language><lastBuildDate>Mon, 03 Oct 2016 20:32:23 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>length of the line segment</title><link>https://example.com/posts/length-of-the-line-segment/</link><dc:creator>Nikola Tesla</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>My Nikola Site</title><link>https://example.com/</link><description>This is a demo site for Nikola.</description><atom:link href="https://example.com/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><lastBuildDate>Fri, 07 Oct 2016 00:00:07 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>length of the line segment</title><link>https://example.com/posts/kata/length-of-the-line-segment/</link><dc:creator>Nikola Tesla</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -7,7 +7,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="length-of-the-line-segment"&gt;length-of-the-line-segment&lt;a class="anchor-link" href="https://example.com/posts/length-of-the-line-segment/#length-of-the-line-segment"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id="length-of-the-line-segment"&gt;length-of-the-line-segment&lt;a class="anchor-link" href="https://example.com/posts/kata/length-of-the-line-segment/#length-of-the-line-segment"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="http://www.codewars.com/kata/length-of-the-line-segment"&gt;length-of-the-line-segment&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -19,7 +19,7 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Problem"&gt;Problem&lt;a class="anchor-link" href="https://example.com/posts/length-of-the-line-segment/#Problem"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Problem"&gt;Problem&lt;a class="anchor-link" href="https://example.com/posts/kata/length-of-the-line-segment/#Problem"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -207,7 +207,7 @@ If the 2 given co-ordinates are the same, the returned length should be "0.00"
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Logic"&gt;Logic&lt;a class="anchor-link" href="https://example.com/posts/length-of-the-line-segment/#Logic"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id="Logic"&gt;Logic&lt;a class="anchor-link" href="https://example.com/posts/kata/length-of-the-line-segment/#Logic"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="http://mathbang.net/138"&gt;좌표평면에서 두 점 사이의 거리 | 수학방&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;영어로 써져 있어서 엄청 어려워 보이는데 별거 없다. 그냥 중학교때 배운 좌표평면에서 두 점 사이의 거리 구하는 공식이다...&lt;/li&gt;
 &lt;/ul&gt;
@@ -217,7 +217,7 @@ If the 2 given co-ordinates are the same, the returned length should be "0.00"
 &lt;li&gt;그 결과값을 더하고&lt;/li&gt;
 &lt;li&gt;root 취해준다.&lt;/li&gt;
 &lt;li&gt;이게 뭘 하는건지는 확실하지 않다...&lt;/li&gt;
-&lt;li&gt;일단 로직이 이렇게 된다는 것을 알 수 있다.&lt;p&gt;&lt;a href="https://example.com/posts/length-of-the-line-segment/"&gt;Read more…&lt;/a&gt; (3 min remaining to read)&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>codewars</category><guid>https://example.com/posts/length-of-the-line-segment/</guid><pubDate>Mon, 03 Oct 2016 20:16:00 GMT</pubDate></item><item><title>ch01</title><link>https://example.com/posts/ch01/</link><dc:creator>Nikola Tesla</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+&lt;li&gt;일단 로직이 이렇게 된다는 것을 알 수 있다.&lt;p&gt;&lt;a href="https://example.com/posts/kata/length-of-the-line-segment/"&gt;Read more…&lt;/a&gt; (3 min remaining to read)&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>codewars</category><guid>https://example.com/posts/kata/length-of-the-line-segment/</guid><pubDate>Mon, 03 Oct 2016 20:16:00 GMT</pubDate></item><item><title>ch01</title><link>https://example.com/posts/ch01/</link><dc:creator>Nikola Tesla</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
